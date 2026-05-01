@@ -17,6 +17,6 @@ final class Application extends BaseApplication
     {
         parent::__construct(self::NAME, self::VERSION);
 
-        $this->addCommand(new NewCommand());
+        $this->addCommand(new NewCommand);
     }
 }

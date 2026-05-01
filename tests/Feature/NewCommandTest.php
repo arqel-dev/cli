@@ -20,7 +20,7 @@ function runNewCommand(array $input, ?string $cwd = null): array
     chdir($cwd);
 
     try {
-        $tester = new CommandTester((new Application())->find('new'));
+        $tester = new CommandTester((new Application)->find('new'));
         $tester->setInputs([]);
         $exit = $tester->execute($input, ['interactive' => false]);
     } finally {

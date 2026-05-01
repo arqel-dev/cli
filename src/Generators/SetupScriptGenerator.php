@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Arqel\Cli\Generators;
 
+use InvalidArgumentException;
+
 /**
  * Renders the bash / PowerShell setup script that the user reviews and runs.
  *
@@ -25,17 +27,17 @@ final readonly class SetupScriptGenerator
         public bool $mcpIntegration = false,
     ) {
         if ($appName === '' || preg_match('/^[a-zA-Z][a-zA-Z0-9_-]*$/', $appName) !== 1) {
-            throw new \InvalidArgumentException(
+            throw new InvalidArgumentException(
                 "Invalid app name '{$appName}'. Must start with a letter and contain only letters, numbers, dashes or underscores.",
             );
         }
 
         if (! in_array($starter, self::STARTERS, true)) {
-            throw new \InvalidArgumentException("Unknown starter '{$starter}'.");
+            throw new InvalidArgumentException("Unknown starter '{$starter}'.");
         }
 
         if (! in_array($tenancy, self::TENANCIES, true)) {
-            throw new \InvalidArgumentException("Unknown tenancy '{$tenancy}'.");
+            throw new InvalidArgumentException("Unknown tenancy '{$tenancy}'.");
         }
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Arqel\Cli\Commands;
 
 use Arqel\Cli\Generators\SetupScriptGenerator;
+use InvalidArgumentException;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -79,7 +80,7 @@ final class NewCommand extends Command
                 darkMode: $darkMode,
                 mcpIntegration: $mcp,
             );
-        } catch (\InvalidArgumentException $e) {
+        } catch (InvalidArgumentException $e) {
             $output->writeln('<error>'.$e->getMessage().'</error>');
 
             return Command::FAILURE;
